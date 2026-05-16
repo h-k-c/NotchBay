@@ -9,12 +9,12 @@ struct NotchActivityView: View {
     var rightBar: BarConfig? = nil
     var rightDot: DotConfig? = nil
 
-    struct BarConfig {
+    struct BarConfig: Sendable {
         var fraction: Double
         var color: Color
     }
 
-    struct DotConfig {
+    struct DotConfig: Sendable {
         var color: Color
         var pulse: Bool
     }
@@ -26,9 +26,9 @@ struct NotchActivityView: View {
             if let left {
                 left
                     .frame(width: 18)
-                Divider()
+                Rectangle()
+                    .fill(.white.opacity(0.1))
                     .frame(width: 1, height: 16)
-                    .background(.white.opacity(0.1))
                     .padding(.horizontal, 5)
             }
 
