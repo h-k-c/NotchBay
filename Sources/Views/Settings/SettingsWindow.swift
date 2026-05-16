@@ -43,8 +43,8 @@ struct GeneralSettings: View {
         Form {
             Section {
                 Toggle("登录时启动 NotchBay", isOn: $launchAtLogin)
-                    .onChange(of: launchAtLogin) { newValue in
-                        setLaunchAtLogin(newValue)
+                    .onChange(of: launchAtLogin, initial: false) {
+                        setLaunchAtLogin(launchAtLogin)
                     }
             }
 
@@ -163,8 +163,29 @@ struct AppearanceSettings: View {
     @AppStorage("showModuleDots") private var showModuleDots = true
     @AppStorage("animationSpeed") private var animationSpeed = 1.0
 
+    @AppStorage("notch.width")         private var notchW:       Double = 185
+    @AppStorage("notch.capHeight")     private var notchCapH:    Double = 22
+    @AppStorage("notch.contentHeight") private var notchContent: Double = 24
+    @AppStorage("notch.topRadius")     private var notchTopR:    Double = 0
+    @AppStorage("notch.bottomRadius")  private var notchBottomR: Double = 9
+
     var body: some View {
         Form {
+            Section("刘海形状（重启后生效）") {
+                LabeledSlider(label: "宽度", value: $notchW, range: 100...350, unit: "pt")
+                LabeledSlider(label: "顶部高度（物理遮挡区）", value: $notchCapH, range: 10...40, unit: "pt")
+                LabeledSlider(label: "内容区高度", value: $notchContent, range: 10...50, unit: "pt")
+                LabeledSlider(label: "顶角弧度", value: $notchTopR, range: 0...20, unit: "pt")
+                LabeledSlider(label: "底角弧度", value: $notchBottomR, range: 0...20, unit: "pt")
+
+                Button("恢复默认") {
+                    notchW = 185; notchCapH = 22; notchContent = 24
+                    notchTopR = 0; notchBottomR = 9
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(.blue)
+            }
+
             Section("紧凑模式") {
                 HStack {
                     Text("背景不透明度")
@@ -173,7 +194,6 @@ struct AppearanceSettings: View {
                         .frame(width: 36)
                         .font(.system(size: 11, design: .monospaced))
                 }
-
                 Toggle("显示模块指示点", isOn: $showModuleDots)
             }
 
@@ -184,15 +204,26 @@ struct AppearanceSettings: View {
                     Text("快").tag(0.5)
                 }
             }
-
-            Section("提示") {
-                Text("修改外观设置后即刻生效")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
         }
         .formStyle(.grouped)
         .padding()
+    }
+}
+
+private struct LabeledSlider: View {
+    let label: String
+    @Binding var value: Double
+    let range: ClosedRange<Double>
+    let unit: String
+
+    var body: some View {
+        HStack {
+            Text(label).frame(width: 150, alignment: .leading)
+            Slider(value: $value, in: range, step: 1)
+            Text("\(Int(value))\(unit)")
+                .frame(width: 44)
+                .font(.system(size: 11, design: .monospaced))
+        }
     }
 }
 

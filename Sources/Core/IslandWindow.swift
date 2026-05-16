@@ -107,24 +107,34 @@ struct NotchView: View {
     @State private var morphPhase: MorphPhase = .idle
     @State private var displayedModuleID: String? = nil
 
+    // User-adjustable via Settings > 外观 > 刘海形状
+    @AppStorage("notch.width")         private var storedW:       Double = 185
+    @AppStorage("notch.capHeight")     private var storedCapH:    Double = 22
+    @AppStorage("notch.contentHeight") private var storedContent: Double = 24
+    @AppStorage("notch.topRadius")     private var storedTopR:    Double = 0
+    @AppStorage("notch.bottomRadius")  private var storedBottomR: Double = 9
+
+    private var baseW:       CGFloat { CGFloat(storedW) }
+    private var baseH:       CGFloat { CGFloat(storedCapH + storedContent) }
+    private var baseTopR:    CGFloat { CGFloat(storedTopR) }
+    private var baseBottomR: CGFloat { CGFloat(storedBottomR) }
+    private var baseContentH: CGFloat { CGFloat(storedContent) }
+
     private let hoverScale: CGFloat = 1.2
     private let morphScale: CGFloat = 1.12
 
     private var hasContent: Bool { displayedModule != nil }
 
     private var currentW: CGFloat {
-        let base: CGFloat
         switch morphPhase {
-        case .widening, .swapping: base = notchW * morphScale
-        default: base = isHovered ? notchW * hoverScale : notchW
+        case .widening, .swapping: return baseW * morphScale
+        default: return isHovered ? baseW * hoverScale : baseW
         }
-        return base
     }
-    // Height scales proportionally on hover (same ratio as width)
-    private var currentH: CGFloat { isHovered && morphPhase == .idle ? notchH * hoverScale : notchH }
-    private var currentR: CGFloat { isHovered && morphPhase == .idle ? notchRadius * hoverScale : notchRadius }
-    // Content height = visible area below physical notch cap, scaled same as overall
-    private var currentContentH: CGFloat { isHovered && morphPhase == .idle ? contentH * hoverScale : contentH }
+    private var currentH: CGFloat { isHovered && morphPhase == .idle ? baseH * hoverScale : baseH }
+    private var currentTopR: CGFloat { isHovered && morphPhase == .idle ? baseTopR * hoverScale : baseTopR }
+    private var currentBottomR: CGFloat { isHovered && morphPhase == .idle ? baseBottomR * hoverScale : baseBottomR }
+    private var currentContentH: CGFloat { isHovered && morphPhase == .idle ? baseContentH * hoverScale : baseContentH }
     private var contentOpacity: Double { morphPhase == .swapping ? 0.0 : 1.0 }
 
     private var displayedModule: IslandModule? {
@@ -136,7 +146,7 @@ struct NotchView: View {
         GeometryReader { geo in
             // Custom Path guarantees pixel-perfect flat top corners (no anti-aliased rounding)
             ZStack(alignment: .bottom) {
-                NotchShape(cornerRadius: currentR)
+                NotchShape(topRadius: currentTopR, bottomRadius: currentBottomR)
                     .fill(.black)
                     .frame(width: currentW, height: currentH)
 
@@ -183,33 +193,42 @@ struct NotchView: View {
     }
 }
 
-/// Notch shape: flat top corners, rounded bottom corners.
-/// Uses an explicit Path so rendering is pixel-perfect with no anti-aliased corner rounding.
-private struct NotchShape: Shape {
-    var cornerRadius: CGFloat
+/// Notch shape with independently controllable top and bottom corner radii.
+/// Uses explicit Path so all four corners are pixel-perfect — no SwiftUI anti-aliased rounding.
+struct NotchShape: Shape {
+    var topRadius: CGFloat
+    var bottomRadius: CGFloat
 
-    var animatableData: CGFloat {
-        get { cornerRadius }
-        set { cornerRadius = newValue }
+    var animatableData: AnimatablePair<CGFloat, CGFloat> {
+        get { .init(topRadius, bottomRadius) }
+        set { topRadius = newValue.first; bottomRadius = newValue.second }
     }
 
     func path(in rect: CGRect) -> Path {
-        let r = min(cornerRadius, rect.height / 2, rect.width / 2)
+        let tr = min(topRadius, rect.height / 2, rect.width / 2)
+        let br = min(bottomRadius, rect.height / 2, rect.width / 2)
         var p = Path()
-        // Top-left: flat (no radius)
-        p.move(to: CGPoint(x: rect.minX, y: rect.minY))
-        // Top-right: flat (no radius)
-        p.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
-        // Right side down to bottom-right curve
-        p.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - r))
-        // Bottom-right corner
-        p.addArc(center: CGPoint(x: rect.maxX - r, y: rect.maxY - r),
-                 radius: r, startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
-        // Bottom edge
-        p.addLine(to: CGPoint(x: rect.minX + r, y: rect.maxY))
-        // Bottom-left corner
-        p.addArc(center: CGPoint(x: rect.minX + r, y: rect.maxY - r),
-                 radius: r, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
+        p.move(to: CGPoint(x: rect.minX + tr, y: rect.minY))
+        p.addLine(to: CGPoint(x: rect.maxX - tr, y: rect.minY))
+        if tr > 0 {
+            p.addArc(center: CGPoint(x: rect.maxX - tr, y: rect.minY + tr),
+                     radius: tr, startAngle: .degrees(-90), endAngle: .degrees(0), clockwise: false)
+        }
+        p.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - br))
+        if br > 0 {
+            p.addArc(center: CGPoint(x: rect.maxX - br, y: rect.maxY - br),
+                     radius: br, startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
+        }
+        p.addLine(to: CGPoint(x: rect.minX + br, y: rect.maxY))
+        if br > 0 {
+            p.addArc(center: CGPoint(x: rect.minX + br, y: rect.maxY - br),
+                     radius: br, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
+        }
+        p.addLine(to: CGPoint(x: rect.minX, y: rect.minY + tr))
+        if tr > 0 {
+            p.addArc(center: CGPoint(x: rect.minX + tr, y: rect.minY + tr),
+                     radius: tr, startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false)
+        }
         p.closeSubpath()
         return p
     }
