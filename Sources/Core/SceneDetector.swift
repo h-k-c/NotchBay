@@ -86,7 +86,7 @@ final class SceneDetector: ObservableObject {
         guard relevant.map(\.id) != carouselModules.map(\.id) else { return }
 
         // Preserve current module position if it's still relevant
-        let currentID = carouselModules.isEmpty ? nil : carouselModules[carouselIndex % max(carouselModules.count, 1)].id
+        let currentID: String? = carouselModules.isEmpty ? nil : carouselModules[carouselIndex % carouselModules.count].id
         carouselModules = relevant
 
         if let id = currentID, let newIdx = relevant.firstIndex(where: { $0.id == id }) {
