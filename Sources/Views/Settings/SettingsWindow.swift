@@ -175,8 +175,8 @@ struct AppearanceSettings: View {
                 LabeledSlider(label: "宽度", value: $notchW, range: 100...350, unit: "pt")
                 LabeledSlider(label: "顶部高度（物理遮挡区）", value: $notchCapH, range: 10...40, unit: "pt")
                 LabeledSlider(label: "内容区高度", value: $notchContent, range: 10...50, unit: "pt")
-                LabeledSlider(label: "顶角凹弧度", value: $notchTopR, range: 0...20, unit: "pt")
-                LabeledSlider(label: "底角弧度", value: $notchBottomR, range: 0...20, unit: "pt")
+                LabeledSlider(label: "顶角凹弧度", value: $notchTopR, range: 0...50, unit: "pt")
+                LabeledSlider(label: "底角弧度", value: $notchBottomR, range: 0...30, unit: "pt")
 
                 Button("恢复默认") {
                     notchW = 185; notchCapH = 22; notchContent = 24

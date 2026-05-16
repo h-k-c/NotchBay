@@ -111,12 +111,12 @@ struct NotchView: View {
     @AppStorage("notch.width")         private var storedW:       Double = 185
     @AppStorage("notch.capHeight")     private var storedCapH:    Double = 22
     @AppStorage("notch.contentHeight") private var storedContent: Double = 24
-    @AppStorage("notch.topRadius")     private var storedTopR:    Double = 0
+    @AppStorage("notch.topRadius")     private var storedTopR:    Double = 8
     @AppStorage("notch.bottomRadius")  private var storedBottomR: Double = 9
 
     private var baseW:       CGFloat { CGFloat(storedW) }
     private var baseH:       CGFloat { CGFloat(storedCapH + storedContent) }
-    private var baseTopR:    CGFloat { CGFloat(storedTopR) }
+    private var baseTopR:    CGFloat { min(CGFloat(storedTopR), 50) }
     private var baseBottomR: CGFloat { CGFloat(storedBottomR) }
     private var baseContentH: CGFloat { CGFloat(storedContent) }
 
@@ -207,38 +207,68 @@ struct NotchShape: Shape {
     func path(in rect: CGRect) -> Path {
         let tr = min(topRadius, rect.height / 2, rect.width / 2)
         let br = min(bottomRadius, rect.height / 2, rect.width / 2)
+        // Outer tip rounding radius — small convex arc at the top-left/right outer corners
+        // so the cusp (180° direction reversal) becomes a smooth rounded tip
+        let tipR: CGFloat = tr > 0 ? max(tr * 0.3, 2) : 0
         var p = Path()
-        // Top edge flares tr outward on each side — top is wider than body
-        p.move(to: CGPoint(x: rect.minX - tr, y: rect.minY))
-        p.addLine(to: CGPoint(x: rect.maxX + tr, y: rect.minY))
-        // Top-right: flared arc — center is BELOW-RIGHT of shape corner (outside)
-        // CCW from 270° (top-edge tip) → 180° (right-side point): sweeps upper-right = outward flare
-        if tr > 0 {
-            p.addArc(center: CGPoint(x: rect.maxX + tr, y: rect.minY + tr),
-                     radius: tr, startAngle: .degrees(270), endAngle: .degrees(180), clockwise: false)
+
+        // Top edge: straight section between the two rounded outer tips
+        p.move(to: CGPoint(x: rect.minX - tr + tipR, y: rect.minY))
+        p.addLine(to: CGPoint(x: rect.maxX + tr - tipR, y: rect.minY))
+
+        // Top-right outer tip: small convex arc rounding the outer corner
+        // center is slightly inside the tip; arc goes from top-edge tangent → downward tangent
+        p.addArc(center: CGPoint(x: rect.maxX + tr - tipR, y: rect.minY + tipR),
+                 radius: tipR,
+                 startAngle: .degrees(270), endAngle: .degrees(0), clockwise: false)
+
+        // Top-right concave curve: from outer tip → body right side
+        // Bézier with exact tangent match for G1 continuity
+        let k: CGFloat = 0.5523
+        let cLen = tr - tipR          // effective concave span
+        if cLen > 0 {
+            p.addCurve(to: CGPoint(x: rect.maxX, y: rect.minY + tr),
+                       control1: CGPoint(x: rect.maxX + tipR + cLen * (1 - k), y: rect.minY + tipR),
+                       control2: CGPoint(x: rect.maxX, y: rect.minY + tipR + cLen * (1 - k)))
+        } else {
+            p.addLine(to: CGPoint(x: rect.maxX, y: rect.minY + tr))
         }
+
         // Right side down
         p.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - br))
-        // Bottom-right: convex arc
+
+        // Bottom-right: convex arc (verified working: clockwise: false = CW visual in y-down)
         if br > 0 {
             p.addArc(center: CGPoint(x: rect.maxX - br, y: rect.maxY - br),
                      radius: br, startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
         }
+
         // Bottom edge
         p.addLine(to: CGPoint(x: rect.minX + br, y: rect.maxY))
+
         // Bottom-left: convex arc
         if br > 0 {
             p.addArc(center: CGPoint(x: rect.minX + br, y: rect.maxY - br),
                      radius: br, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
         }
+
         // Left side up
         p.addLine(to: CGPoint(x: rect.minX, y: rect.minY + tr))
-        // Top-left: flared arc — center is BELOW-LEFT of shape corner (outside)
-        // CCW from 0° (left-side point) → 270° (top-edge tip): sweeps upper-left = outward flare
-        if tr > 0 {
-            p.addArc(center: CGPoint(x: rect.minX - tr, y: rect.minY + tr),
-                     radius: tr, startAngle: .degrees(0), endAngle: .degrees(270), clockwise: false)
+
+        // Top-left concave curve: from body left side → outer tip
+        if cLen > 0 {
+            p.addCurve(to: CGPoint(x: rect.minX - tr + tipR, y: rect.minY + tipR),
+                       control1: CGPoint(x: rect.minX, y: rect.minY + tipR + cLen * (1 - k)),
+                       control2: CGPoint(x: rect.minX - tipR - cLen * (1 - k), y: rect.minY + tipR))
+        } else {
+            p.addLine(to: CGPoint(x: rect.minX - tr + tipR, y: rect.minY + tipR))
         }
+
+        // Top-left outer tip: small convex arc
+        p.addArc(center: CGPoint(x: rect.minX - tr + tipR, y: rect.minY + tipR),
+                 radius: tipR,
+                 startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false)
+
         p.closeSubpath()
         return p
     }

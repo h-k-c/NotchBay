@@ -17,8 +17,10 @@
 		4E0B08B572015357A60198D6 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C11B07071975CE75E7A1429 /* SettingsWindow.swift */; };
 		4E27C5287EB6016012C37A7C /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2916E4711F7D4A48AFE0B245 /* AppState.swift */; };
 		52091893247643269EDD8162 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCDC6E95942DC22634979B8 /* AppDelegate.swift */; };
+		5629B78C7021CFDD0B472F26 /* TimerModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA13F912DCAF9D421D63744 /* TimerModule.swift */; };
 		5B2549D21F33989EF684C63A /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81837CAAFC1DC4CDDE4FF5D /* Logging.swift */; };
 		622D12A6A545764CEA26AA0E /* ModuleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6971E3C4D13DB623620A25B8 /* ModuleProtocol.swift */; };
+		64283103C83F97A704A14787 /* ClipboardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3909806AF4954AF3CB468B3 /* ClipboardMonitor.swift */; };
 		67F2BAB730CD2AB59D926D5F /* MediaMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E04CD35D4CCBFF365FDB3C2 /* MediaMonitor.swift */; };
 		684105C570AA0521D460048D /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08F761315E7E32B82507F68F /* EventKit.framework */; };
 		68C0EA6BAA28F4EE9B4580EB /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199B94E51DEBFACE11096BA8 /* UserNotifications.framework */; };
@@ -32,12 +34,14 @@
 		8C6D819D26EA53ADD8B1295A /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53B0FB0504800EC8B05D5D /* Permissions.swift */; };
 		8CC7948E1DECC97B1B861DF2 /* StatusIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3754E1B800CA3B02822CAFDC /* StatusIndicator.swift */; };
 		90C4B076449BC3908553552D /* SceneDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5EC72557F9F0969740C2E6 /* SceneDetector.swift */; };
+		A13F5B137F7DEFB700AE084B /* NotchActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D3AD5B0F955179B772E665 /* NotchActivityView.swift */; };
 		A3D5609CE6E700B8CC0C939B /* NotificationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 251173A657390B83AC711A64 /* NotificationModule.swift */; };
 		AE6A6B5FE388CB3FFC355EB9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A529AF1340B463FBAD3CE1DD /* Extensions.swift */; };
 		B8B4062AF1B246A74AA08637 /* NowPlayingModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF1EB66CA695330044B9925 /* NowPlayingModule.swift */; };
 		BF3AD752D2ECA084FF6AEBB8 /* AISessionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE8DC206FD6A33B621858777 /* AISessionMonitor.swift */; };
 		D66A2B5F800078034ECFED15 /* CalendarModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7622702625DA7F561492DEC /* CalendarModule.swift */; };
 		E813E6A7E1724A651B61E391 /* BatteryModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01E51D5341FF3C9FC04377F /* BatteryModule.swift */; };
+		ED481BEF8ACE5BA31B8FA595 /* ClipboardModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8A5D53A26E871C1A104818F /* ClipboardModule.swift */; };
 		FA69D8CE1EA9EE51285DCD7B /* ExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DDF196314592D116308B02 /* ExpandedView.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,8 +68,10 @@
 		912475D3D5C16606067B176C /* BatteryMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryMonitor.swift; sourceTree = "<group>"; };
 		92C99D9DFE40F625A2F9B36A /* WeatherModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModule.swift; sourceTree = "<group>"; };
 		9B62A6042052D858F3B339E6 /* IslandWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IslandWindow.swift; sourceTree = "<group>"; };
+		9CA13F912DCAF9D421D63744 /* TimerModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModule.swift; sourceTree = "<group>"; };
 		A1DDF196314592D116308B02 /* ExpandedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedView.swift; sourceTree = "<group>"; };
 		A529AF1340B463FBAD3CE1DD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A6D3AD5B0F955179B772E665 /* NotchActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotchActivityView.swift; sourceTree = "<group>"; };
 		A81837CAAFC1DC4CDDE4FF5D /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		A86B697347BBF177BAA1FD46 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		B39F1608D0C7DE399B8A9C43 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
@@ -73,7 +79,9 @@
 		D01E51D5341FF3C9FC04377F /* BatteryModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryModule.swift; sourceTree = "<group>"; };
 		D7622702625DA7F561492DEC /* CalendarModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModule.swift; sourceTree = "<group>"; };
 		DD52A38568B3BA20A8897C75 /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
+		E3909806AF4954AF3CB468B3 /* ClipboardMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardMonitor.swift; sourceTree = "<group>"; };
 		EE8DC206FD6A33B621858777 /* AISessionMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISessionMonitor.swift; sourceTree = "<group>"; };
+		F8A5D53A26E871C1A104818F /* ClipboardModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardModule.swift; sourceTree = "<group>"; };
 		FA53B0FB0504800EC8B05D5D /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +117,14 @@
 				24D294A83B3EA838D0E1B4A5 /* NotchBay.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		2A184F158CCF6F0CE0B0C001 /* Clipboard */ = {
+			isa = PBXGroup;
+			children = (
+				F8A5D53A26E871C1A104818F /* ClipboardModule.swift */,
+			);
+			path = Clipboard;
 			sourceTree = "<group>";
 		};
 		4065A354F3355A0311790B5A /* Views */ = {
@@ -147,6 +163,14 @@
 			path = Calendar;
 			sourceTree = "<group>";
 		};
+		5AA101142A17958160728006 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				9CA13F912DCAF9D421D63744 /* TimerModule.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
 		624E7B66232ED857D8121E19 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,8 +178,10 @@
 				9D74DF9D7B4B911EF3363116 /* AISession */,
 				417C486E045367BD97EED160 /* Battery */,
 				55E7B031EA4049354C03A31D /* Calendar */,
+				2A184F158CCF6F0CE0B0C001 /* Clipboard */,
 				FDB6C9E99FFE1B9922DFBE25 /* Notification */,
 				B287CD52B12BC563C03F4514 /* NowPlaying */,
+				5AA101142A17958160728006 /* Timer */,
 				7103DFA34B9155EF37D12DC7 /* Weather */,
 			);
 			path = Modules;
@@ -221,6 +247,7 @@
 				EE8DC206FD6A33B621858777 /* AISessionMonitor.swift */,
 				912475D3D5C16606067B176C /* BatteryMonitor.swift */,
 				C703D13A613F0F64D2BFB3D9 /* CalendarService.swift */,
+				E3909806AF4954AF3CB468B3 /* ClipboardMonitor.swift */,
 				7E04CD35D4CCBFF365FDB3C2 /* MediaMonitor.swift */,
 				A86B697347BBF177BAA1FD46 /* NotificationService.swift */,
 				6ACF5F113612439DFB1CD171 /* WeatherService.swift */,
@@ -245,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				0A4E5966B86019A8E6BEF5D2 /* MarqueeText.swift */,
+				A6D3AD5B0F955179B772E665 /* NotchActivityView.swift */,
 				DD52A38568B3BA20A8897C75 /* ProgressBar.swift */,
 				3754E1B800CA3B02822CAFDC /* StatusIndicator.swift */,
 			);
@@ -327,6 +355,8 @@
 				895B6D4C155CC498B98678CC /* BatteryMonitor.swift in Sources */,
 				D66A2B5F800078034ECFED15 /* CalendarModule.swift in Sources */,
 				0C7A07FDD9252DF9570B6385 /* CalendarService.swift in Sources */,
+				ED481BEF8ACE5BA31B8FA595 /* ClipboardModule.swift in Sources */,
+				64283103C83F97A704A14787 /* ClipboardMonitor.swift in Sources */,
 				768F27852DF4B39C6927581D /* Constants.swift in Sources */,
 				FA69D8CE1EA9EE51285DCD7B /* ExpandedView.swift in Sources */,
 				AE6A6B5FE388CB3FFC355EB9 /* Extensions.swift in Sources */,
@@ -336,6 +366,7 @@
 				14EC4122B9779952BF7BC03D /* MarqueeText.swift in Sources */,
 				67F2BAB730CD2AB59D926D5F /* MediaMonitor.swift in Sources */,
 				622D12A6A545764CEA26AA0E /* ModuleProtocol.swift in Sources */,
+				A13F5B137F7DEFB700AE084B /* NotchActivityView.swift in Sources */,
 				743961952C3BE132202E5842 /* NotchBayApp.swift in Sources */,
 				A3D5609CE6E700B8CC0C939B /* NotificationModule.swift in Sources */,
 				8450CCDA617E74FA9A476E69 /* NotificationService.swift in Sources */,
@@ -345,6 +376,7 @@
 				90C4B076449BC3908553552D /* SceneDetector.swift in Sources */,
 				4E0B08B572015357A60198D6 /* SettingsWindow.swift in Sources */,
 				8CC7948E1DECC97B1B861DF2 /* StatusIndicator.swift in Sources */,
+				5629B78C7021CFDD0B472F26 /* TimerModule.swift in Sources */,
 				20573D47193BA182F3BC78B8 /* WeatherModule.swift in Sources */,
 				263E78431BB6BC14049FDF3D /* WeatherService.swift in Sources */,
 			);
