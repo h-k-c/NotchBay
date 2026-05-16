@@ -1,0 +1,208 @@
+{
+  "": {
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/primary.swiftdeps"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Core/AppDelegate.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AppDelegate.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AppDelegate.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AppDelegate~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AppDelegate.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AppDelegate.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Core/AppState.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AppState.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AppState.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AppState~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AppState.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AppState.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Core/IslandPosition.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/IslandPosition.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/IslandPosition.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/IslandPosition~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/IslandPosition.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/IslandPosition.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Core/IslandWindow.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/IslandWindow.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/IslandWindow.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/IslandWindow~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/IslandWindow.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/IslandWindow.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Core/Permissions.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Permissions.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Permissions.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Permissions~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Permissions.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Permissions.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Core/SceneDetector.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/SceneDetector.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/SceneDetector.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/SceneDetector~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/SceneDetector.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/SceneDetector.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Modules/AISession/AISessionModule.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AISessionModule.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AISessionModule.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AISessionModule~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AISessionModule.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AISessionModule.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Modules/Battery/BatteryModule.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/BatteryModule.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/BatteryModule.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/BatteryModule~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/BatteryModule.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/BatteryModule.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Modules/Calendar/CalendarModule.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/CalendarModule.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/CalendarModule.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/CalendarModule~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/CalendarModule.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/CalendarModule.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Modules/ModuleProtocol.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ModuleProtocol.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ModuleProtocol.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ModuleProtocol~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ModuleProtocol.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ModuleProtocol.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Modules/Notification/NotificationModule.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotificationModule.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotificationModule.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotificationModule~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotificationModule.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotificationModule.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Modules/NowPlaying/NowPlayingModule.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NowPlayingModule.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NowPlayingModule.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NowPlayingModule~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NowPlayingModule.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NowPlayingModule.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Modules/Weather/WeatherModule.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/WeatherModule.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/WeatherModule.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/WeatherModule~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/WeatherModule.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/WeatherModule.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/NotchBayApp.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotchBayApp.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotchBayApp.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotchBayApp~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotchBayApp.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotchBayApp.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Services/AISessionMonitor.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AISessionMonitor.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AISessionMonitor.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AISessionMonitor~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AISessionMonitor.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AISessionMonitor.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Services/BatteryMonitor.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/BatteryMonitor.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/BatteryMonitor.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/BatteryMonitor~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/BatteryMonitor.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/BatteryMonitor.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Services/CalendarService.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/CalendarService.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/CalendarService.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/CalendarService~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/CalendarService.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/CalendarService.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Services/MediaMonitor.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/MediaMonitor.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/MediaMonitor.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/MediaMonitor~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/MediaMonitor.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/MediaMonitor.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Services/NotificationService.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotificationService.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotificationService.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotificationService~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotificationService.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotificationService.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Services/WeatherService.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/WeatherService.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/WeatherService.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/WeatherService~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/WeatherService.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/WeatherService.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Utilities/Constants.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Constants.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Constants.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Constants~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Constants.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Constants.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Utilities/Extensions.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Extensions.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Extensions.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Extensions~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Extensions.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Extensions.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Utilities/Logging.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Logging.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Logging.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Logging~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Logging.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Logging.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Views/Components/MarqueeText.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/MarqueeText.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/MarqueeText.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/MarqueeText~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/MarqueeText.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/MarqueeText.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Views/Components/ProgressBar.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ProgressBar.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ProgressBar.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ProgressBar~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ProgressBar.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ProgressBar.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Views/Components/StatusIndicator.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/StatusIndicator.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/StatusIndicator.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/StatusIndicator~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/StatusIndicator.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/StatusIndicator.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Views/ExpandedView.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ExpandedView.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ExpandedView.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ExpandedView~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ExpandedView.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ExpandedView.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/Sources/Views/Settings/SettingsWindow.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/SettingsWindow.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/SettingsWindow.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/SettingsWindow~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/SettingsWindow.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/SettingsWindow.dia"
+  },
+  "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/DerivedSources/resource_bundle_accessor.swift": {
+    "dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/resource_bundle_accessor.d",
+    "object": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/resource_bundle_accessor.swift.o",
+    "swiftmodule": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/resource_bundle_accessor~partial.swiftmodule",
+    "swift-dependencies": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/resource_bundle_accessor.swiftdeps",
+    "diagnostics": "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/resource_bundle_accessor.dia"
+  }
+}

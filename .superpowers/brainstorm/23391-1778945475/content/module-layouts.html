@@ -1,0 +1,246 @@
+<h2>各活动在刘海内的布局风格</h2>
+<p class="subtitle">选择信息密度和视觉语言</p>
+
+<style>
+* { box-sizing: border-box; }
+.notch {
+  background: #000;
+  border-radius: 0 0 14px 14px;
+  width: 200px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.notch.wide { width: 240px; height: 36px; border-radius: 0 0 16px 16px; }
+
+/* Style A: Minimal — icon + single line */
+.style-a .notch { gap: 6px; }
+.style-a .icon { font-size: 12px; opacity: 0.9; }
+.style-a .text { color: #fff; font-size: 11px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.style-a .dot { width: 5px; height: 5px; border-radius: 50%; margin-left: auto; flex-shrink:0; }
+
+/* Style B: Balanced — icon + label + value */
+.style-b .notch { gap: 5px; }
+.style-b .icon { font-size: 11px; opacity: 0.8; flex-shrink:0; }
+.style-b .label { color: rgba(255,255,255,0.45); font-size: 9px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; }
+.style-b .value { color: #fff; font-size: 11px; font-weight: 600; }
+.style-b .col { display: flex; flex-direction: column; line-height: 1.2; overflow:hidden; }
+.style-b .sep { width: 1px; height: 16px; background: rgba(255,255,255,0.1); margin: 0 4px; flex-shrink:0; }
+.style-b .bar { height: 3px; border-radius: 2px; background: rgba(255,255,255,0.15); width: 40px; overflow:hidden; margin-top:2px; flex-shrink:0; }
+.style-b .bar-fill { height: 100%; border-radius: 2px; background: #22c55e; width: 65%; }
+
+/* Style C: Rich — colored accent + animated indicator */
+.style-c .notch { gap: 6px; position: relative; }
+.style-c .accent { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.style-c .main { color: #fff; font-size: 11px; font-weight: 500; flex: 1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.style-c .sub { color: rgba(255,255,255,0.4); font-size: 9px; margin-left: auto; flex-shrink:0; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(0.8)} }
+.style-c .pulse { animation: pulse 1.5s ease-in-out infinite; }
+
+/* Eq bars */
+@keyframes eq1{0%,100%{height:8px}50%{height:14px}}
+@keyframes eq2{0%,100%{height:14px}50%{height:6px}}
+@keyframes eq3{0%,100%{height:10px}50%{height:16px}}
+.eq { display:flex; align-items:flex-end; gap:2px; height:16px; flex-shrink:0; }
+.eq span { width:3px; border-radius:1px; background:#1db954; }
+.eq span:nth-child(1){animation:eq1 0.8s ease-in-out infinite}
+.eq span:nth-child(2){animation:eq2 0.6s ease-in-out infinite}
+.eq span:nth-child(3){animation:eq3 0.9s ease-in-out infinite}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+.module-row {
+  background: #0d0d0d;
+  border-radius: 10px;
+  padding: 12px 8px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.module-name {
+  font-size: 9px;
+  color: #444;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+</style>
+
+<div class="cards">
+
+  <!-- Style A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#080808; padding: 16px 12px;">
+      <p style="color:#555;font-size:9px;text-align:center;margin:0 0 10px;letter-spacing:1px;">MINIMAL · 极简</p>
+      <div class="style-a preview-grid">
+        <div class="module-row">
+          <div class="notch">
+            <span class="icon">♪</span>
+            <span class="text">Bad Guy — Billie</span>
+          </div>
+          <span class="module-name">音乐</span>
+        </div>
+        <div class="module-row">
+          <div class="notch">
+            <span class="icon">🔋</span>
+            <span class="text">87%</span>
+            <span class="dot" style="background:#22c55e;margin-left:auto"></span>
+          </div>
+          <span class="module-name">电池</span>
+        </div>
+        <div class="module-row">
+          <div class="notch">
+            <span class="icon">📋</span>
+            <span class="text">Hello world, this is...</span>
+          </div>
+          <span class="module-name">剪贴板</span>
+        </div>
+        <div class="module-row">
+          <div class="notch">
+            <span class="icon">⏱</span>
+            <span class="text">12:34 remaining</span>
+          </div>
+          <span class="module-name">倒计时</span>
+        </div>
+        <div class="module-row" style="grid-column:span 2">
+          <div class="notch wide">
+            <span class="icon">🔔</span>
+            <span class="text" style="flex:1">Messages: Hey, are you free...</span>
+          </div>
+          <span class="module-name">通知</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A · 极简</h3>
+      <p>图标 + 一行文字。干净，信息最纯粹，像原生 macOS 刘海。</p>
+    </div>
+  </div>
+
+  <!-- Style B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#080808; padding: 16px 12px;">
+      <p style="color:#555;font-size:9px;text-align:center;margin:0 0 10px;letter-spacing:1px;">BALANCED · 均衡</p>
+      <div class="style-b preview-grid">
+        <div class="module-row">
+          <div class="notch">
+            <div class="eq"><span></span><span></span><span></span></div>
+            <div class="col" style="flex:1;overflow:hidden;margin-left:4px">
+              <span class="value" style="font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Bad Guy</span>
+              <span class="label" style="font-size:8px">Billie Eilish</span>
+            </div>
+          </div>
+          <span class="module-name">音乐</span>
+        </div>
+        <div class="module-row">
+          <div class="notch">
+            <div class="col">
+              <span class="label">电池</span>
+              <span class="value">87%</span>
+            </div>
+            <div class="sep"></div>
+            <div class="col">
+              <div class="bar"><div class="bar-fill"></div></div>
+              <span class="label" style="color:#22c55e">充电</span>
+            </div>
+          </div>
+          <span class="module-name">电池</span>
+        </div>
+        <div class="module-row">
+          <div class="notch">
+            <div class="col" style="flex:1;overflow:hidden">
+              <span class="label">剪贴板</span>
+              <span class="value" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Hello world...</span>
+            </div>
+          </div>
+          <span class="module-name">剪贴板</span>
+        </div>
+        <div class="module-row">
+          <div class="notch">
+            <div class="col">
+              <span class="label">倒计时</span>
+              <span class="value">12:34</span>
+            </div>
+          </div>
+          <span class="module-name">倒计时</span>
+        </div>
+        <div class="module-row" style="grid-column:span 2">
+          <div class="notch wide">
+            <div class="col" style="flex:1;overflow:hidden">
+              <span class="label">Messages</span>
+              <span class="value" style="font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Hey, are you free tonight?</span>
+            </div>
+          </div>
+          <span class="module-name">通知</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B · 均衡</h3>
+      <p>小标签 + 主信息 + 进度条。信息层次清晰，有质感但不拥挤。</p>
+    </div>
+  </div>
+
+  <!-- Style C -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#080808; padding: 16px 12px;">
+      <p style="color:#555;font-size:9px;text-align:center;margin:0 0 10px;letter-spacing:1px;">RICH · 彩色强调</p>
+      <div class="style-c preview-grid">
+        <div class="module-row">
+          <div class="notch">
+            <span class="accent" style="background:#1db954"></span>
+            <span class="main">Bad Guy — Billie</span>
+            <div class="eq" style="margin-left:auto"><span></span><span></span><span></span></div>
+          </div>
+          <span class="module-name">音乐</span>
+        </div>
+        <div class="module-row">
+          <div class="notch">
+            <span class="accent pulse" style="background:#22c55e"></span>
+            <span class="main">87% 充电中</span>
+            <span class="sub">⚡</span>
+          </div>
+          <span class="module-name">电池</span>
+        </div>
+        <div class="module-row">
+          <div class="notch">
+            <span class="accent" style="background:#3b82f6"></span>
+            <span class="main">Hello world...</span>
+            <span class="sub">📋</span>
+          </div>
+          <span class="module-name">剪贴板</span>
+        </div>
+        <div class="module-row">
+          <div class="notch">
+            <span class="accent pulse" style="background:#f97316"></span>
+            <span class="main">12:34 remaining</span>
+            <span class="sub">⏱</span>
+          </div>
+          <span class="module-name">倒计时</span>
+        </div>
+        <div class="module-row" style="grid-column:span 2">
+          <div class="notch wide">
+            <span class="accent pulse" style="background:#8b5cf6"></span>
+            <span class="main">Messages — Hey, are you free</span>
+            <span class="sub">🔔</span>
+          </div>
+          <span class="module-name">通知</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C · 彩色强调</h3>
+      <p>左侧彩色圆点代表活动类型（绿=音乐/电池，蓝=剪贴板，橙=倒计时，紫=通知），视觉辨识度高，有活力。</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:16px">选择最符合你要的"高级感"的风格</p>

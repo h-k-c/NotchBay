@@ -1,0 +1,556 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+    "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay_NotchBay.bundle/Resources" : {
+      "inputs" : [
+        {
+          "kind" : "directory",
+          "name" : "/Users/openorange/github_pro/NotchBay/Resources"
+        }
+      ],
+      "outputs" : [
+        {
+          "kind" : "directory",
+          "name" : "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay_NotchBay.bundle/Resources"
+        }
+      ]
+    }
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.NotchBay-arm64-apple-macosx-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/sources",
+      "importPath" : "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Core/AppDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Core/AppState.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Core/IslandPosition.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Core/IslandWindow.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Core/Permissions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Core/SceneDetector.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Modules/AISession/AISessionModule.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Modules/Battery/BatteryModule.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Modules/Calendar/CalendarModule.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Modules/ModuleProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Modules/Notification/NotificationModule.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Modules/NowPlaying/NowPlayingModule.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Modules/Weather/WeatherModule.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/NotchBayApp.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Services/AISessionMonitor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Services/BatteryMonitor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Services/CalendarService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Services/MediaMonitor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Services/NotificationService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Services/WeatherService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Utilities/Constants.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Utilities/Extensions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Utilities/Logging.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Views/Components/MarqueeText.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Views/Components/ProgressBar.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Views/Components/StatusIndicator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Views/ExpandedView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Views/Settings/SettingsWindow.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/DerivedSources/resource_bundle_accessor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<NotchBay-arm64-apple-macosx-debug.module-resources>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "NotchBay",
+      "moduleOutputPath" : "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/Modules/NotchBay.swiftmodule",
+      "objects" : [
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AppDelegate.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AppState.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/IslandPosition.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/IslandWindow.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Permissions.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/SceneDetector.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AISessionModule.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/BatteryModule.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/CalendarModule.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ModuleProtocol.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotificationModule.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NowPlayingModule.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/WeatherModule.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotchBayApp.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/AISessionMonitor.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/BatteryMonitor.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/CalendarService.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/MediaMonitor.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/NotificationService.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/WeatherService.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Constants.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Extensions.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/Logging.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/MarqueeText.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ProgressBar.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/StatusIndicator.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/ExpandedView.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/SettingsWindow.swift.o",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/resource_bundle_accessor.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx14.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-Onone",
+        "-enable-testing",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_AVAILABLE",
+        "-module-cache-path",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "NotchBay_main",
+        "-swift-version",
+        "6",
+        "-Xfrontend",
+        "-experimental-lazy-typecheck",
+        "-Xfrontend",
+        "-experimental-skip-all-function-bodies",
+        "-Xfrontend",
+        "-experimental-allow-module-with-compiler-errors",
+        "-Xfrontend",
+        "-empty-abi-descriptor",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "notchbay"
+      ],
+      "outputFileMapPath" : "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/Modules/NotchBay.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : true,
+      "sources" : [
+        "/Users/openorange/github_pro/NotchBay/Sources/Core/AppDelegate.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Core/AppState.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Core/IslandPosition.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Core/IslandWindow.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Core/Permissions.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Core/SceneDetector.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Modules/AISession/AISessionModule.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Modules/Battery/BatteryModule.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Modules/Calendar/CalendarModule.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Modules/ModuleProtocol.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Modules/Notification/NotificationModule.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Modules/NowPlaying/NowPlayingModule.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Modules/Weather/WeatherModule.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/NotchBayApp.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Services/AISessionMonitor.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Services/BatteryMonitor.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Services/CalendarService.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Services/MediaMonitor.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Services/NotificationService.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Services/WeatherService.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Utilities/Constants.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Utilities/Extensions.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Utilities/Logging.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Views/Components/MarqueeText.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Views/Components/ProgressBar.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Views/Components/StatusIndicator.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Views/ExpandedView.swift",
+        "/Users/openorange/github_pro/NotchBay/Sources/Views/Settings/SettingsWindow.swift",
+        "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/DerivedSources/resource_bundle_accessor.swift"
+      ],
+      "tempsPath" : "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "NotchBay" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "NotchBay",
+      "-package-name",
+      "notchbay",
+      "-c",
+      "/Users/openorange/github_pro/NotchBay/Sources/Core/AppDelegate.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Core/AppState.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Core/IslandPosition.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Core/IslandWindow.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Core/Permissions.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Core/SceneDetector.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Modules/AISession/AISessionModule.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Modules/Battery/BatteryModule.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Modules/Calendar/CalendarModule.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Modules/ModuleProtocol.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Modules/Notification/NotificationModule.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Modules/NowPlaying/NowPlayingModule.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Modules/Weather/WeatherModule.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/NotchBayApp.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Services/AISessionMonitor.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Services/BatteryMonitor.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Services/CalendarService.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Services/MediaMonitor.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Services/NotificationService.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Services/WeatherService.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Utilities/Constants.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Utilities/Extensions.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Utilities/Logging.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Views/Components/MarqueeText.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Views/Components/ProgressBar.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Views/Components/StatusIndicator.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Views/ExpandedView.swift",
+      "/Users/openorange/github_pro/NotchBay/Sources/Views/Settings/SettingsWindow.swift",
+      "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/DerivedSources/resource_bundle_accessor.swift",
+      "-I",
+      "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx14.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-Onone",
+      "-enable-testing",
+      "-j8",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_AVAILABLE",
+      "-module-cache-path",
+      "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "NotchBay_main",
+      "-swift-version",
+      "6",
+      "-Xfrontend",
+      "-experimental-lazy-typecheck",
+      "-Xfrontend",
+      "-experimental-skip-all-function-bodies",
+      "-Xfrontend",
+      "-experimental-allow-module-with-compiler-errors",
+      "-Xfrontend",
+      "-empty-abi-descriptor",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "notchbay",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "NotchBay" : [
+
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Core/AppDelegate.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Core/AppState.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Core/IslandPosition.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Core/IslandWindow.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Core/Permissions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Core/SceneDetector.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Modules/AISession/AISessionModule.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Modules/Battery/BatteryModule.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Modules/Calendar/CalendarModule.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Modules/ModuleProtocol.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Modules/Notification/NotificationModule.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Modules/NowPlaying/NowPlayingModule.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Modules/Weather/WeatherModule.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/NotchBayApp.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Services/AISessionMonitor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Services/BatteryMonitor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Services/CalendarService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Services/MediaMonitor.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Services/NotificationService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Services/WeatherService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Utilities/Constants.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Utilities/Extensions.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Utilities/Logging.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Views/Components/MarqueeText.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Views/Components/ProgressBar.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Views/Components/StatusIndicator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Views/ExpandedView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/Sources/Views/Settings/SettingsWindow.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/DerivedSources/resource_bundle_accessor.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/NotchBay.build/sources"
+    },
+    "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/openorange/github_pro/NotchBay/.build/index-build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+name: NotchBay
+options:
+  bundleIdPrefix: com.notchbay
+  deploymentTarget:
+    macOS: "14.0"
+  xcodeVersion: "15.0"
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    ENABLE_USER_SCRIPT_SANDBOXING: "NO"
+
+targets:
+  NotchBay:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources
+    resources:
+      - path: Resources
+    dependencies:
+      - sdk: IOKit.framework
+      - sdk: EventKit.framework
+      - sdk: WeatherKit.framework
+      - sdk: UserNotifications.framework
+    settings:
+      base:
+        INFOPLIST_FILE: Resources/Info.plist
+        GENERATE_INFOPLIST_FILE: "NO"
+        PRODUCT_BUNDLE_IDENTIFIER: com.notchbay.app
+        PRODUCT_NAME: NotchBay
+        MARKETING_VERSION: "1.0.0"
+        CURRENT_PROJECT_VERSION: "1"
+        DEVELOPMENT_TEAM: ""
+        CODE_SIGN_STYLE: Automatic
+        OTHER_LINKER_FLAGS: "-framework IOKit -framework EventKit -framework WeatherKit -framework UserNotifications"
+    info:
+      path: Resources/Info.plist
+    entitlements:
+      path: Resources/NotchBay.entitlements
