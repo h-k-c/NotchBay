@@ -1,5 +1,32 @@
+# Xcode
 .build/
 DerivedData/
 *.xcuserstate
 xcuserdata/
+*.xcworkspace/
+!*.xcodeproj/*.xcworkspace/
+*.xccheckout
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Swift Package Manager
+.swiftpm/
+
+# Build artifacts
+*.dSYM
+*.dSYM.zip
+
+# Editor
+*.swp
+*.swo
+.idea/
+
+# Claude Code
+.claude/
+
+# Superpowers (local dev tooling)
 .superpowers/
