@@ -208,13 +208,14 @@ struct NotchShape: Shape {
         let tr = min(topRadius, rect.height / 2, rect.width / 2)
         let br = min(bottomRadius, rect.height / 2, rect.width / 2)
         var p = Path()
-        // Top edge
+        // Top edge (full width; concave corners will scoop inward from the endpoints)
         p.move(to: CGPoint(x: rect.minX + tr, y: rect.minY))
         p.addLine(to: CGPoint(x: rect.maxX - tr, y: rect.minY))
-        // Top-right: convex outward arc (center inside shape)
+        // Top-right: CONCAVE inward arc — center at top-right corner (outside shape)
+        // Sweeps from top-edge point (180°) to right-side point (90°) CCW → dips into shape
         if tr > 0 {
-            p.addArc(center: CGPoint(x: rect.maxX - tr, y: rect.minY + tr),
-                     radius: tr, startAngle: .degrees(-90), endAngle: .degrees(0), clockwise: false)
+            p.addArc(center: CGPoint(x: rect.maxX, y: rect.minY),
+                     radius: tr, startAngle: .degrees(180), endAngle: .degrees(90), clockwise: false)
         }
         // Right side down
         p.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - br))
@@ -232,10 +233,11 @@ struct NotchShape: Shape {
         }
         // Left side up
         p.addLine(to: CGPoint(x: rect.minX, y: rect.minY + tr))
-        // Top-left: convex outward arc (center inside shape)
+        // Top-left: CONCAVE inward arc — center at top-left corner (outside shape)
+        // Sweeps from left-side point (90°) to top-edge point (0°) CCW → dips into shape
         if tr > 0 {
-            p.addArc(center: CGPoint(x: rect.minX + tr, y: rect.minY + tr),
-                     radius: tr, startAngle: .degrees(180), endAngle: .degrees(270), clockwise: false)
+            p.addArc(center: CGPoint(x: rect.minX, y: rect.minY),
+                     radius: tr, startAngle: .degrees(90), endAngle: .degrees(0), clockwise: false)
         }
         p.closeSubpath()
         return p
