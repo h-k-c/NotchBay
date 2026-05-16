@@ -12,7 +12,14 @@ final class AppState: ObservableObject {
     @Published var activeModuleID: String? = nil
     @Published var isExpanded: Bool = false
     @Published var modules: [IslandModule] = []
-    @Published var notchHovered: Bool = false
+    @Published var carouselModules: [IslandModule] = []
+    @Published var carouselIndex: Int = 0
+    @Published var notchHovered: Bool = false  // already exists — verified
+
+    var activeCarouselModule: IslandModule? {
+        guard !carouselModules.isEmpty else { return nil }
+        return carouselModules[carouselIndex % carouselModules.count]
+    }
 
     // MARK: - Window Management
 
