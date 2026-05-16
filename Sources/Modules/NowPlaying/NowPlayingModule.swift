@@ -34,26 +34,14 @@ struct NowPlayingCompact: View {
     @ObservedObject private var monitor = MediaMonitor.shared
 
     var body: some View {
-        HStack(spacing: 6) {
-            Image(systemName: "music.note")
-                .font(.system(size: 11, weight: .medium))
-                .foregroundStyle(.white)
-
-            if monitor.isPlaying, !monitor.title.isEmpty {
-                Text(monitor.displayTitle)
-                    .font(.system(size: 11, weight: .medium))
-                    .foregroundStyle(.white)
-                    .lineLimit(1)
-
-                // Animated equalizer bars
-                EqualizerBars()
-            } else {
-                Text("未在播放")
-                    .font(.system(size: 11, weight: .medium))
-                    .foregroundStyle(.white.opacity(0.5))
-            }
-        }
-        
+        NotchActivityView(
+            left: AnyView(EqualizerBars().opacity(monitor.isPlaying ? 1 : 0.3)),
+            label: monitor.artist.isEmpty ? "音乐" : monitor.artist,
+            value: {
+                let t = monitor.title.isEmpty ? "未在播放" : monitor.title
+                return t.count > 22 ? String(t.prefix(22)) : t
+            }()
+        )
     }
 }
 
