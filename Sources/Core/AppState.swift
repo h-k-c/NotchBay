@@ -36,15 +36,24 @@ final class AppState: ObservableObject {
     }
 
     private func setupSceneDetection() {
-        sceneDetector.$activeModuleID
+        sceneDetector.$carouselModules
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] moduleID in
-                guard let self, self.activeModuleID != moduleID else { return }
-                withAnimation(.easeInOut(duration: 0.2)) {
-                    self.activeModuleID = moduleID
-                }
+            .sink { [weak self] modules in
+                self?.carouselModules = modules
             }
             .store(in: &cancellables)
+
+        sceneDetector.$carouselIndex
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] idx in
+                guard let self else { return }
+                self.carouselIndex = idx
+                // Keep legacy activeModuleID in sync
+                self.activeModuleID = self.activeCarouselModule?.id
+            }
+            .store(in: &cancellables)
+
+        sceneDetector.startCarousel()
     }
 
     // MARK: - Module Management
