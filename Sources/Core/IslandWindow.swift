@@ -1,11 +1,11 @@
 import AppKit
 import SwiftUI
 
-// Notch Simulator design: 160×21pt notch, full-width 100pt window, .screenSaver level
 private let windowH: CGFloat = 100
-private let notchW: CGFloat = 185  // matches MacBook Pro notch width (~160pt)
-private let notchH: CGFloat = 30   // slightly taller than real notch (21pt) for content
-private let notchRadius: CGFloat = 9  // real notch bottom curve radius
+private let notchW: CGFloat = 185       // matches MacBook Pro notch width (~160pt)
+private let capH: CGFloat = 22          // physical notch height — content here is hidden by hardware
+private let contentStripH: CGFloat = 26 // activity strip below the physical notch (visible)
+private let notchRadius: CGFloat = 9
 
 @MainActor
 final class IslandWindow: NSObject, NSWindowDelegate {
@@ -46,7 +46,7 @@ final class IslandWindow: NSObject, NSWindowDelegate {
         let mouse = NSEvent.mouseLocation
         // Notch hit region in screen coords (AppKit bottom-up: maxY = screen top)
         let hoverW = notchW * 1.5
-        let hoverH = notchH * 1.5
+        let hoverH = (capH + contentStripH) * 1.2
         let inZone = abs(mouse.x - screen.frame.midX) < hoverW / 2
                   && mouse.y > screen.frame.maxY - hoverH
         AppState.shared.notchHovered = inZone
@@ -57,7 +57,7 @@ final class IslandWindow: NSObject, NSWindowDelegate {
     private func expand() {
         guard let screen = NSScreen.main else { return }
         expandedPanel?.close()
-        let r = NSRect(x: screen.frame.midX - 170, y: screen.frame.maxY - notchH - 288, width: 340, height: 280)
+        let r = NSRect(x: screen.frame.midX - 170, y: screen.frame.maxY - capH - contentStripH - 288, width: 340, height: 280)
         let p = NSPanel(contentRect: r, styleMask: [.borderless, .nonactivatingPanel, .titled], backing: .buffered, defer: false)
         p.level = NSWindow.Level.floating
         p.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .ignoresCycle]
@@ -101,8 +101,10 @@ struct NotchView: View {
     @State private var morphPhase: MorphPhase = .idle
     @State private var displayedModuleID: String? = nil
 
-    private let hoverScale: CGFloat = 1.2
+    private let hoverScale: CGFloat = 1.15
     private let morphScale: CGFloat = 1.12
+
+    private var hasContent: Bool { displayedModule != nil }
 
     private var currentW: CGFloat {
         let base: CGFloat
@@ -112,7 +114,13 @@ struct NotchView: View {
         }
         return base
     }
-    private var currentH: CGFloat { isHovered && morphPhase == .idle ? notchH * hoverScale : notchH }
+
+    // Height = cap (hidden by hardware) + content strip (visible). Cap-only when nothing to show.
+    private var currentH: CGFloat {
+        let base: CGFloat = hasContent ? capH + contentStripH : capH
+        return isHovered && morphPhase == .idle && hasContent ? base * hoverScale : base
+    }
+
     private var currentR: CGFloat { isHovered && morphPhase == .idle ? notchRadius * hoverScale : notchRadius }
     private var contentOpacity: Double { morphPhase == .swapping ? 0.0 : 1.0 }
 
@@ -123,7 +131,8 @@ struct NotchView: View {
 
     var body: some View {
         GeometryReader { geo in
-            ZStack {
+            // ZStack aligned to bottom so content anchors below the cap (physical notch area)
+            ZStack(alignment: .bottom) {
                 UnevenRoundedRectangle(
                     topLeadingRadius: 0,
                     bottomLeadingRadius: currentR,
@@ -131,17 +140,22 @@ struct NotchView: View {
                     topTrailingRadius: 0
                 )
                 .fill(.black)
+                .frame(width: currentW, height: currentH)
 
+                // Content only renders in the visible strip below the physical notch
                 HStack(spacing: 6) {
                     if let m = displayedModule { m.compactView() }
                 }
+                .frame(height: contentStripH)
                 .padding(.horizontal, 12)
-                .opacity(contentOpacity)
+                .opacity(hasContent ? contentOpacity : 0)
                 .animation(.easeInOut(duration: 0.06), value: contentOpacity)
             }
             .frame(width: currentW, height: currentH)
+            // y: currentH / 2 keeps top edge flush with screen top (SwiftUI top-down coords)
             .position(x: geo.size.width / 2, y: currentH / 2)
             .animation(.spring(response: 0.25, dampingFraction: 0.75), value: currentW)
+            .animation(.spring(response: 0.3, dampingFraction: 0.8), value: currentH)
             .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isHovered)
             .onHover { isHovered = $0 }
             .onChange(of: appState.carouselIndex, initial: false) {
