@@ -34,47 +34,17 @@ struct BatteryCompact: View {
     @ObservedObject private var monitor = BatteryMonitor.shared
 
     var body: some View {
-        HStack(spacing: 4) {
-            Image(systemName: batteryIcon)
-                .font(.system(size: 11, weight: .medium))
-                .foregroundStyle(batteryColor)
-
-            Text("\(monitor.percentage)%")
-                .font(.system(size: 11, weight: .medium))
-                .foregroundStyle(batteryColor)
-
-            if monitor.isCharging {
-                Image(systemName: "bolt.fill")
-                    .font(.system(size: 8))
-                    .foregroundStyle(.green)
-                    .opacity(chargingAnimating ? 0.3 : 1.0)
-                    .animation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: chargingAnimating)
-            }
-        }
-        
+        NotchActivityView(
+            label: monitor.isCharging ? "充电中" : "电池",
+            value: "\(monitor.percentage)%",
+            rightBar: .init(fraction: Double(monitor.percentage) / 100.0, color: barColor)
+        )
     }
 
-    private var batteryColor: Color {
+    private var barColor: Color {
         if monitor.isCharging { return .statusGreen }
-        if monitor.isLow { return .statusRed }
-        return .white
-    }
-
-    private var batteryIcon: String {
-        let pct = monitor.percentage
-        switch pct {
-        case 0..<25: return "battery.25percent"
-        case 25..<50: return "battery.50percent"
-        case 50..<75: return "battery.75percent"
-        default: return monitor.isCharging ? "battery.100percent.bolt" : "battery.100percent"
-        }
-    }
-
-    @State private var chargingAnimating = false
-
-    func onAppear() -> some View {
-        self.onAppear { chargingAnimating = true }
-            .onDisappear { chargingAnimating = false }
+        if monitor.percentage <= 20 { return .statusRed }
+        return .white.opacity(0.7)
     }
 }
 
