@@ -2,8 +2,10 @@ import AppKit
 import SwiftUI
 
 private let windowH: CGFloat = 100
-private let notchW: CGFloat = 185  // matches MacBook Pro notch width (~160pt)
-private let notchH: CGFloat = 30   // slightly taller than real notch so bottom strip is visible
+private let notchW: CGFloat = 185   // matches MacBook Pro notch width
+private let notchCapH: CGFloat = 22 // physical notch height (hardware covers this)
+private let contentH: CGFloat = 16  // visible strip below physical notch
+private let notchH: CGFloat = notchCapH + contentH  // total shape height = 38pt
 private let notchRadius: CGFloat = 9
 
 @MainActor
@@ -29,7 +31,11 @@ final class IslandWindow: NSObject, NSWindowDelegate {
         // Pass all mouse events through — menu bar stays fully clickable
         panel.ignoresMouseEvents = true
 
-        panel.contentView = NSHostingView(rootView: NotchView().environmentObject(AppState.shared))
+        let hostingView = NSHostingView(rootView: NotchView().environmentObject(AppState.shared))
+        hostingView.wantsLayer = true
+        hostingView.layer?.cornerRadius = 0
+        hostingView.layer?.masksToBounds = false
+        panel.contentView = hostingView
         panel.orderFront(nil)
         self.islandPanel = panel
         AppState.shared.islandWindow = self
@@ -113,8 +119,11 @@ struct NotchView: View {
         }
         return base
     }
+    // Height scales proportionally on hover (same ratio as width)
     private var currentH: CGFloat { isHovered && morphPhase == .idle ? notchH * hoverScale : notchH }
     private var currentR: CGFloat { isHovered && morphPhase == .idle ? notchRadius * hoverScale : notchRadius }
+    // Content height = visible area below physical notch cap, scaled same as overall
+    private var currentContentH: CGFloat { isHovered && morphPhase == .idle ? contentH * hoverScale : contentH }
     private var contentOpacity: Double { morphPhase == .swapping ? 0.0 : 1.0 }
 
     private var displayedModule: IslandModule? {
@@ -135,10 +144,11 @@ struct NotchView: View {
                 .fill(.black)
                 .frame(width: currentW, height: currentH)
 
-                // Content only renders in the visible strip below the physical notch
+                // Content in the visible strip below the physical notch cap
                 HStack(spacing: 6) {
                     if let m = displayedModule { m.compactView() }
                 }
+                .frame(height: currentContentH)
                 .padding(.horizontal, 12)
                 .opacity(contentOpacity)
                 .animation(.easeInOut(duration: 0.06), value: contentOpacity)
