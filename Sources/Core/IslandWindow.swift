@@ -18,9 +18,9 @@ final class IslandWindow: NSObject, NSWindowDelegate {
     func show() {
         guard let screen = NSScreen.main else { return }
 
-        // Panel extends 3pt above screen so macOS corner-softening artifacts are off-screen
+        // Panel extends 10pt above screen so macOS corner-softening artifacts are off-screen
         let panelW = notchW * 2.0 + 80
-        let overbleed: CGFloat = 3
+        let overbleed: CGFloat = 10
         let rect = NSRect(x: screen.frame.midX - panelW / 2, y: screen.frame.maxY - windowH + overbleed, width: panelW, height: windowH + overbleed)
 
         let panel = NSPanel(contentRect: rect, styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
@@ -134,16 +134,11 @@ struct NotchView: View {
 
     var body: some View {
         GeometryReader { geo in
-            // ZStack aligned to bottom so content anchors below the cap (physical notch area)
+            // Custom Path guarantees pixel-perfect flat top corners (no anti-aliased rounding)
             ZStack(alignment: .bottom) {
-                UnevenRoundedRectangle(
-                    topLeadingRadius: 0,
-                    bottomLeadingRadius: currentR,
-                    bottomTrailingRadius: currentR,
-                    topTrailingRadius: 0
-                )
-                .fill(.black)
-                .frame(width: currentW, height: currentH)
+                NotchShape(cornerRadius: currentR)
+                    .fill(.black)
+                    .frame(width: currentW, height: currentH)
 
                 // Content in the visible strip below the physical notch cap
                 HStack(spacing: 6) {
@@ -155,8 +150,8 @@ struct NotchView: View {
                 .animation(.easeInOut(duration: 0.06), value: contentOpacity)
             }
             .frame(width: currentW, height: currentH)
-            // Panel is 3pt above screen; +3 shifts shape down so top aligns with actual screen top
-            .position(x: geo.size.width / 2, y: currentH / 2 + 3)
+            // Panel is 10pt above screen; +10 shifts shape down so top aligns with actual screen top
+            .position(x: geo.size.width / 2, y: currentH / 2 + 10)
             .animation(.spring(response: 0.25, dampingFraction: 0.75), value: currentW)
             .animation(.spring(response: 0.3, dampingFraction: 0.8), value: currentH)
             .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isHovered)
@@ -185,5 +180,37 @@ struct NotchView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
             morphPhase = .idle
         }
+    }
+}
+
+/// Notch shape: flat top corners, rounded bottom corners.
+/// Uses an explicit Path so rendering is pixel-perfect with no anti-aliased corner rounding.
+private struct NotchShape: Shape {
+    var cornerRadius: CGFloat
+
+    var animatableData: CGFloat {
+        get { cornerRadius }
+        set { cornerRadius = newValue }
+    }
+
+    func path(in rect: CGRect) -> Path {
+        let r = min(cornerRadius, rect.height / 2, rect.width / 2)
+        var p = Path()
+        // Top-left: flat (no radius)
+        p.move(to: CGPoint(x: rect.minX, y: rect.minY))
+        // Top-right: flat (no radius)
+        p.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+        // Right side down to bottom-right curve
+        p.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - r))
+        // Bottom-right corner
+        p.addArc(center: CGPoint(x: rect.maxX - r, y: rect.maxY - r),
+                 radius: r, startAngle: .degrees(0), endAngle: .degrees(90), clockwise: false)
+        // Bottom edge
+        p.addLine(to: CGPoint(x: rect.minX + r, y: rect.maxY))
+        // Bottom-left corner
+        p.addArc(center: CGPoint(x: rect.minX + r, y: rect.maxY - r),
+                 radius: r, startAngle: .degrees(90), endAngle: .degrees(180), clockwise: false)
+        p.closeSubpath()
+        return p
     }
 }
