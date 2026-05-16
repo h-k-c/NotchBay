@@ -106,7 +106,6 @@ struct NotchView: View {
 
     private var hasContent: Bool { displayedModule != nil }
 
-    // Width scales on hover/morph. Height never scales — notch cap is fixed hardware size.
     private var currentW: CGFloat {
         switch morphPhase {
         case .widening, .swapping: return notchW * morphScale
@@ -114,12 +113,14 @@ struct NotchView: View {
         }
     }
 
-    // Height: physical notch at rest; extends down by contentStripH when module is active.
+    // Base height: physical notch at rest; grows when module active.
+    // Hover scales the whole island proportionally (width + height).
     private var currentH: CGFloat {
-        hasContent ? notchH + contentStripH : notchH
+        let base: CGFloat = hasContent ? notchH + contentStripH : notchH
+        return isHovered ? base * hoverScale : base
     }
 
-    private var currentR: CGFloat { notchRadius }
+    private var currentR: CGFloat { isHovered ? notchRadius * hoverScale : notchRadius }
     private var contentOpacity: Double { morphPhase == .swapping ? 0.0 : 1.0 }
 
     private var displayedModule: IslandModule? {
