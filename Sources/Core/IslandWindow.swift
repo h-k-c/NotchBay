@@ -144,7 +144,7 @@ struct NotchView: View {
             .animation(.spring(response: 0.25, dampingFraction: 0.75), value: currentW)
             .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isHovered)
             .onHover { isHovered = $0 }
-            .onChange(of: appState.carouselIndex) { _ in
+            .onChange(of: appState.carouselIndex, initial: false) {
                 triggerMorph()
             }
         }
