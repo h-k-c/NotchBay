@@ -4,7 +4,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
         try? "launched".write(to: URL(fileURLWithPath: "/tmp/notchbay_launched"), atomically: true, encoding: .utf8)
 
-        NSApp.setActivationPolicy(.regular) // DEBUG: test if panel is visible
+        NSApp.setActivationPolicy(.accessory)
 
         MainActor.assumeIsolated {
             let islandWindow = IslandWindow()
@@ -17,6 +17,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             state.registerModule(WeatherModule())
             state.registerModule(CalendarModule())
             state.registerModule(NotificationModule())
+            state.registerModule(ClipboardModule())
+            state.registerModule(TimerModule())
         }
     }
 
