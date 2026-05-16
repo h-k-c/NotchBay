@@ -15,6 +15,7 @@ final class SceneDetector: ObservableObject {
     private var registeredModules: [IslandModule] = []
     private var rotationTimer: Timer?
     private var evaluationTimer: Timer?
+    private var workspaceObserverToken: NSObjectProtocol?
     private let rotationInterval: TimeInterval = 5.0
     private let evaluationInterval: TimeInterval = 0.5
 
@@ -38,7 +39,7 @@ final class SceneDetector: ObservableObject {
             Task { @MainActor in self?.advance() }
         }
         // Re-evaluate immediately when user switches apps (faster than 0.5s poll)
-        NSWorkspace.shared.notificationCenter.addObserver(
+        workspaceObserverToken = NSWorkspace.shared.notificationCenter.addObserver(
             forName: NSWorkspace.didActivateApplicationNotification,
             object: nil,
             queue: .main
@@ -50,7 +51,10 @@ final class SceneDetector: ObservableObject {
     func stopCarousel() {
         evaluationTimer?.invalidate()
         rotationTimer?.invalidate()
-        NSWorkspace.shared.notificationCenter.removeObserver(self)
+        if let token = workspaceObserverToken {
+            NSWorkspace.shared.notificationCenter.removeObserver(token)
+            workspaceObserverToken = nil
+        }
     }
 
     /// Interrupt: jump immediately to a module by id (e.g. new notification)
