@@ -2,9 +2,8 @@ import AppKit
 import SwiftUI
 
 private let windowH: CGFloat = 100
-private let notchW: CGFloat = 162       // physical MacBook Pro notch width
-private let notchH: CGFloat = 22        // physical notch height — at rest matches hardware exactly
-private let contentStripH: CGFloat = 28 // activity strip BELOW the physical notch (visible area)
+private let notchW: CGFloat = 185  // matches MacBook Pro notch width (~160pt)
+private let notchH: CGFloat = 30   // slightly taller than real notch so bottom strip is visible
 private let notchRadius: CGFloat = 9
 
 @MainActor
@@ -46,7 +45,7 @@ final class IslandWindow: NSObject, NSWindowDelegate {
         let mouse = NSEvent.mouseLocation
         // Notch hit region in screen coords (AppKit bottom-up: maxY = screen top)
         let hoverW = notchW * 1.5
-        let hoverH = (notchH + contentStripH) * 1.2
+        let hoverH = notchH * 1.5
         let inZone = abs(mouse.x - screen.frame.midX) < hoverW / 2
                   && mouse.y > screen.frame.maxY - hoverH
         AppState.shared.notchHovered = inZone
@@ -57,7 +56,7 @@ final class IslandWindow: NSObject, NSWindowDelegate {
     private func expand() {
         guard let screen = NSScreen.main else { return }
         expandedPanel?.close()
-        let r = NSRect(x: screen.frame.midX - 170, y: screen.frame.maxY - notchH - contentStripH - 288, width: 340, height: 280)
+        let r = NSRect(x: screen.frame.midX - 170, y: screen.frame.maxY - notchH - 288, width: 340, height: 280)
         let p = NSPanel(contentRect: r, styleMask: [.borderless, .nonactivatingPanel, .titled], backing: .buffered, defer: false)
         p.level = NSWindow.Level.floating
         p.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .ignoresCycle]
@@ -107,20 +106,15 @@ struct NotchView: View {
     private var hasContent: Bool { displayedModule != nil }
 
     private var currentW: CGFloat {
+        let base: CGFloat
         switch morphPhase {
-        case .widening, .swapping: return notchW * morphScale
-        default: return isHovered ? notchW * hoverScale : notchW
+        case .widening, .swapping: base = notchW * morphScale
+        default: base = isHovered ? notchW * hoverScale : notchW
         }
+        return base
     }
-
-    // Base height: physical notch at rest; grows when module active.
-    // Hover scales the whole island proportionally (width + height).
-    private var currentH: CGFloat {
-        let base: CGFloat = hasContent ? notchH + contentStripH : notchH
-        return isHovered ? base * hoverScale : base
-    }
-
-    private var currentR: CGFloat { isHovered ? notchRadius * hoverScale : notchRadius }
+    private var currentH: CGFloat { isHovered && morphPhase == .idle ? notchH * hoverScale : notchH }
+    private var currentR: CGFloat { isHovered && morphPhase == .idle ? notchRadius * hoverScale : notchRadius }
     private var contentOpacity: Double { morphPhase == .swapping ? 0.0 : 1.0 }
 
     private var displayedModule: IslandModule? {
@@ -145,9 +139,8 @@ struct NotchView: View {
                 HStack(spacing: 6) {
                     if let m = displayedModule { m.compactView() }
                 }
-                .frame(height: contentStripH)
                 .padding(.horizontal, 12)
-                .opacity(hasContent ? contentOpacity : 0)
+                .opacity(contentOpacity)
                 .animation(.easeInOut(duration: 0.06), value: contentOpacity)
             }
             .frame(width: currentW, height: currentH)
