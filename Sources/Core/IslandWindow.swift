@@ -91,16 +91,35 @@ final class IslandWindow: NSObject, NSWindowDelegate {
     func windowDidResignKey(_ n: Notification) { if (n.object as? NSWindow) == expandedPanel { dismissExpanded() } }
 }
 
+// Morph transition phases
+private enum MorphPhase: Equatable { case idle, widening, swapping, narrowing }
+
 // Notch Simulator style: pure black, flat top flush with screen edge, only bottom corners rounded
 struct NotchView: View {
     @EnvironmentObject private var appState: AppState
+    @State private var isHovered = false
+    @State private var morphPhase: MorphPhase = .idle
+    @State private var displayedModuleID: String? = nil
 
     private let hoverScale: CGFloat = 1.2
+    private let morphScale: CGFloat = 1.12
 
-    private var isHovered: Bool { appState.notchHovered }
-    private var currentW: CGFloat { isHovered ? notchW * hoverScale : notchW }
-    private var currentH: CGFloat { isHovered ? notchH * hoverScale : notchH }
-    private var currentR: CGFloat { isHovered ? notchRadius * hoverScale : notchRadius }
+    private var currentW: CGFloat {
+        let base: CGFloat
+        switch morphPhase {
+        case .widening, .swapping: base = notchW * morphScale
+        default: base = isHovered ? notchW * hoverScale : notchW
+        }
+        return base
+    }
+    private var currentH: CGFloat { isHovered && morphPhase == .idle ? notchH * hoverScale : notchH }
+    private var currentR: CGFloat { isHovered && morphPhase == .idle ? notchRadius * hoverScale : notchRadius }
+    private var contentOpacity: Double { morphPhase == .swapping ? 0.0 : 1.0 }
+
+    private var displayedModule: IslandModule? {
+        guard let id = displayedModuleID else { return appState.activeCarouselModule }
+        return appState.carouselModules.first { $0.id == id } ?? appState.activeCarouselModule
+    }
 
     var body: some View {
         GeometryReader { geo in
@@ -114,14 +133,40 @@ struct NotchView: View {
                 .fill(.black)
 
                 HStack(spacing: 6) {
-                    if let m = appState.activeModule { m.compactView() }
+                    if let m = displayedModule { m.compactView() }
                 }
                 .padding(.horizontal, 12)
+                .opacity(contentOpacity)
+                .animation(.easeInOut(duration: 0.06), value: contentOpacity)
             }
             .frame(width: currentW, height: currentH)
             .position(x: geo.size.width / 2, y: currentH / 2)
+            .animation(.spring(response: 0.25, dampingFraction: 0.75), value: currentW)
             .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isHovered)
+            .onHover { isHovered = $0 }
+            .onChange(of: appState.carouselIndex) { _ in
+                triggerMorph()
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .onAppear {
+            displayedModuleID = appState.activeCarouselModule?.id
+        }
+    }
+
+    private func triggerMorph() {
+        guard morphPhase == .idle else { return }
+        withAnimation(.spring(response: 0.12, dampingFraction: 0.8)) { morphPhase = .widening }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.13) {
+            morphPhase = .swapping
+            displayedModuleID = appState.activeCarouselModule?.id
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.19) {
+            withAnimation(.spring(response: 0.15, dampingFraction: 0.8)) { morphPhase = .narrowing }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+            morphPhase = .idle
+        }
     }
 }
