@@ -4,8 +4,8 @@ import SwiftUI
 private let windowH: CGFloat = 100
 private let notchW: CGFloat = 185   // matches MacBook Pro notch width
 private let notchCapH: CGFloat = 22 // physical notch height (hardware covers this)
-private let contentH: CGFloat = 16  // visible strip below physical notch
-private let notchH: CGFloat = notchCapH + contentH  // total shape height = 38pt
+private let contentH: CGFloat = 24  // visible strip below physical notch (needs ~22pt for 8+11pt text)
+private let notchH: CGFloat = notchCapH + contentH  // total shape height = 46pt
 private let notchRadius: CGFloat = 9
 
 @MainActor
@@ -18,9 +18,10 @@ final class IslandWindow: NSObject, NSWindowDelegate {
     func show() {
         guard let screen = NSScreen.main else { return }
 
-        // Panel covers only the notch region — ignores mouse events (pass-through)
+        // Panel extends 3pt above screen so macOS corner-softening artifacts are off-screen
         let panelW = notchW * 2.0 + 80
-        let rect = NSRect(x: screen.frame.midX - panelW / 2, y: screen.frame.maxY - windowH, width: panelW, height: windowH)
+        let overbleed: CGFloat = 3
+        let rect = NSRect(x: screen.frame.midX - panelW / 2, y: screen.frame.maxY - windowH + overbleed, width: panelW, height: windowH + overbleed)
 
         let panel = NSPanel(contentRect: rect, styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
         panel.level = .screenSaver
@@ -154,8 +155,8 @@ struct NotchView: View {
                 .animation(.easeInOut(duration: 0.06), value: contentOpacity)
             }
             .frame(width: currentW, height: currentH)
-            // y: currentH / 2 keeps top edge flush with screen top (SwiftUI top-down coords)
-            .position(x: geo.size.width / 2, y: currentH / 2)
+            // Panel is 3pt above screen; +3 shifts shape down so top aligns with actual screen top
+            .position(x: geo.size.width / 2, y: currentH / 2 + 3)
             .animation(.spring(response: 0.25, dampingFraction: 0.75), value: currentW)
             .animation(.spring(response: 0.3, dampingFraction: 0.8), value: currentH)
             .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isHovered)
