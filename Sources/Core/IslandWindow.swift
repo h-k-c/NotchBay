@@ -2,9 +2,9 @@ import AppKit
 import SwiftUI
 
 private let windowH: CGFloat = 100
-private let notchW: CGFloat = 185       // matches MacBook Pro notch width (~160pt)
-private let capH: CGFloat = 22          // physical notch height — content here is hidden by hardware
-private let contentStripH: CGFloat = 26 // activity strip below the physical notch (visible)
+private let notchW: CGFloat = 162       // physical MacBook Pro notch width
+private let notchH: CGFloat = 22        // physical notch height — at rest matches hardware exactly
+private let contentStripH: CGFloat = 28 // activity strip BELOW the physical notch (visible area)
 private let notchRadius: CGFloat = 9
 
 @MainActor
@@ -46,7 +46,7 @@ final class IslandWindow: NSObject, NSWindowDelegate {
         let mouse = NSEvent.mouseLocation
         // Notch hit region in screen coords (AppKit bottom-up: maxY = screen top)
         let hoverW = notchW * 1.5
-        let hoverH = (capH + contentStripH) * 1.2
+        let hoverH = (notchH + contentStripH) * 1.2
         let inZone = abs(mouse.x - screen.frame.midX) < hoverW / 2
                   && mouse.y > screen.frame.maxY - hoverH
         AppState.shared.notchHovered = inZone
@@ -57,7 +57,7 @@ final class IslandWindow: NSObject, NSWindowDelegate {
     private func expand() {
         guard let screen = NSScreen.main else { return }
         expandedPanel?.close()
-        let r = NSRect(x: screen.frame.midX - 170, y: screen.frame.maxY - capH - contentStripH - 288, width: 340, height: 280)
+        let r = NSRect(x: screen.frame.midX - 170, y: screen.frame.maxY - notchH - contentStripH - 288, width: 340, height: 280)
         let p = NSPanel(contentRect: r, styleMask: [.borderless, .nonactivatingPanel, .titled], backing: .buffered, defer: false)
         p.level = NSWindow.Level.floating
         p.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary, .ignoresCycle]
@@ -101,27 +101,25 @@ struct NotchView: View {
     @State private var morphPhase: MorphPhase = .idle
     @State private var displayedModuleID: String? = nil
 
-    private let hoverScale: CGFloat = 1.15
+    private let hoverScale: CGFloat = 1.2
     private let morphScale: CGFloat = 1.12
 
     private var hasContent: Bool { displayedModule != nil }
 
+    // Width scales on hover/morph. Height never scales — notch cap is fixed hardware size.
     private var currentW: CGFloat {
-        let base: CGFloat
         switch morphPhase {
-        case .widening, .swapping: base = notchW * morphScale
-        default: base = isHovered ? notchW * hoverScale : notchW
+        case .widening, .swapping: return notchW * morphScale
+        default: return isHovered ? notchW * hoverScale : notchW
         }
-        return base
     }
 
-    // Height = cap (hidden by hardware) + content strip (visible). Cap-only when nothing to show.
+    // Height: physical notch at rest; extends down by contentStripH when module is active.
     private var currentH: CGFloat {
-        let base: CGFloat = hasContent ? capH + contentStripH : capH
-        return isHovered && morphPhase == .idle && hasContent ? base * hoverScale : base
+        hasContent ? notchH + contentStripH : notchH
     }
 
-    private var currentR: CGFloat { isHovered && morphPhase == .idle ? notchRadius * hoverScale : notchRadius }
+    private var currentR: CGFloat { notchRadius }
     private var contentOpacity: Double { morphPhase == .swapping ? 0.0 : 1.0 }
 
     private var displayedModule: IslandModule? {
