@@ -9,6 +9,8 @@ final class NotificationService: NSObject, ObservableObject, @preconcurrency UNU
 
     @Published var recentNotifications: [IslandNotification] = []
     @Published var hasUnread: Bool = false
+    @Published var lastReceivedAt: Date = .distantPast
+    private var dismissTimer: Timer?
 
     struct IslandNotification: Identifiable {
         let id: String
@@ -75,6 +77,8 @@ final class NotificationService: NSObject, ObservableObject, @preconcurrency UNU
                 self.recentNotifications = Array(self.recentNotifications.prefix(20))
             }
             self.hasUnread = true
+            self.lastReceivedAt = Date()
+            self.scheduleDismiss()
         }
     }
 
@@ -99,6 +103,8 @@ final class NotificationService: NSObject, ObservableObject, @preconcurrency UNU
         DispatchQueue.main.async {
             self.recentNotifications.insert(islandNotif, at: 0)
             self.hasUnread = true
+            self.lastReceivedAt = Date()
+            self.scheduleDismiss()
         }
 
         // Cap at 20
@@ -107,5 +113,16 @@ final class NotificationService: NSObject, ObservableObject, @preconcurrency UNU
         }
         // Suppress system banner
         completionHandler([])
+    }
+
+    // MARK: - Auto-dismiss
+
+    private func scheduleDismiss() {
+        dismissTimer?.invalidate()
+        dismissTimer = Timer.scheduledTimer(withTimeInterval: 8.0, repeats: false) { [weak self] _ in
+            Task { @MainActor in
+                self?.hasUnread = false
+            }
+        }
     }
 }

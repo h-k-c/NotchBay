@@ -4,7 +4,7 @@ final class NotificationModule: IslandModule {
     @ObservedObject private var service = NotificationService.shared
 
     init() {
-        super.init(id: "notification", name: "通知", icon: "bell.fill", priority: 100)
+        super.init(id: "notification", name: "通知", icon: "bell.fill", priority: 70)
     }
 
     override func compactView() -> AnyView {
@@ -34,25 +34,19 @@ struct NotificationCompact: View {
     @ObservedObject private var service = NotificationService.shared
 
     var body: some View {
-        HStack(spacing: 6) {
-            Image(systemName: "bell.fill")
-                .font(.system(size: 11, weight: .medium))
-                .foregroundStyle(Color.statusRed)
-
-            if let latest = service.recentNotifications.first {
-                Text(latest.title)
-                    .font(.system(size: 11, weight: .medium))
-                    .foregroundStyle(.white)
-                    .lineLimit(1)
-                    .transition(.opacity.combined(with: .move(edge: .top)))
-            } else {
-                Text("无通知")
-                    .font(.system(size: 11))
-                    .foregroundStyle(.white.opacity(0.5))
-            }
+        if let latest = service.recentNotifications.first {
+            NotchActivityView(
+                left: AnyView(
+                    Image(systemName: "app.badge")
+                        .font(.system(size: 11))
+                        .foregroundStyle(.white.opacity(0.7))
+                ),
+                label: latest.appName.isEmpty ? "通知" : String(latest.appName.prefix(12)),
+                value: latest.title.isEmpty ? latest.body : String(latest.title.prefix(22))
+            )
+        } else {
+            NotchActivityView(label: "通知", value: "暂无新通知")
         }
-        
-        .animation(.easeInOut(duration: 0.2), value: service.recentNotifications.count)
     }
 }
 
